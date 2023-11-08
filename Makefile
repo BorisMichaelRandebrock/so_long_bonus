@@ -6,7 +6,7 @@
 #    By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/08 13:20:26 by brandebr          #+#    #+#              #
-#    Updated: 2023/11/08 13:42:23 by brandebr         ###   ########.fr        #
+#    Updated: 2023/11/08 15:54:49 by brandebr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,10 +20,32 @@ CC = cc
 
 FLAGS = -Wall -Wextra -Werror -g -I. -I./libft -I.ft_printf
 
-LIBFT = ./libft/libft.a
+LIBFT = ./Libft/libft.a
 LIBFT_DIR = ./libft
 
 FT_PRINTF = ./ft_printf/ft_printf.a
 FT_PRINTF_DIR = ./ft_printf
 
+MLX_DIR = ./mlx
+
 all: $(NAME) Makefile
+
+%.o: %.c so_long.h ./Libft/libft.h ./ft_printf.h Makefile
+	$(CC) $(FLAGS) -c $< -o $@
+
+$(NAME): $(OBJ) $(LIBFT) $(FT_PRINTF)
+	$(CC) $(FLAGS) $(OBJ) $(LIBFT) $(PRINTF) -o $(NAME)
+
+$(FT_PRINTF):
+	@make all -C $(FT_PRINTF_DIR)
+
+$(LIBFT):
+	@make bonus -C $(LIBFT_DIR)
+
+fclean: clean
+	/bin/rm -f $(OBJ) $(NAME)
+	make fclean -C $(LIBFT_DIR)
+
+re: fclean all
+
+.PHONY: all clean fclean re
