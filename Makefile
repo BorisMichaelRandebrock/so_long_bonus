@@ -6,13 +6,13 @@
 #    By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/08 13:20:26 by brandebr          #+#    #+#              #
-#    Updated: 2023/11/08 19:56:32 by brandebr         ###   ########.fr        #
+#    Updated: 2023/11/09 17:46:09 by brandebr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
-SRC = main.c
+SRC = main.c parse_it.c
 
 OBJ = $(SRC:%.c=%.o)
 

@@ -6,14 +6,19 @@
 /*   By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 17:26:44 by brandebr          #+#    #+#             */
-/*   Updated: 2023/11/08 19:49:53 by brandebr         ###   ########.fr       */
+/*   Updated: 2023/11/09 17:46:15 by brandebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(void)
+int	main(int argc, char **argv)
 {
+		t_map	*map;
+
+		map = NULL;
+		parse_it(argv[1]);
 		write(1, "Hello Sasha", 11);
 		ft_printf(" 🐬 thanks for all  the fish 🖖");
+		exit (0);
 }
