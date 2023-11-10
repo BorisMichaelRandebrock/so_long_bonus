@@ -6,7 +6,7 @@
 /*   By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:18:47 by brandebr          #+#    #+#             */
-/*   Updated: 2023/11/09 18:17:32 by brandebr         ###   ########.fr       */
+/*   Updated: 2023/11/10 18:13:28 by brandebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	file_name(char	*fn)
 		while (fn[i])
 				i++;
 		i = i - 4;
-		while (i)
+		while (fn[i])
 		{
 				if (fn[i++] == end[j++])
 						continue ;
@@ -51,7 +51,7 @@ int parse_it(int argc, char **argv)
 				write(2, "Error\nWrong file reading", 23);
 				exit (0);
 		}
-		if (file_name(argv[1]) == 0)
+		if (file_name(argv[1]) == -1)
 		{
 				write(2, "Error\nWrong file type", 20);
 				exit (0);
