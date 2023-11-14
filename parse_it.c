@@ -6,7 +6,7 @@
 /*   By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:18:47 by brandebr          #+#    #+#             */
-/*   Updated: 2023/11/10 18:13:28 by brandebr         ###   ########.fr       */
+/*   Updated: 2023/11/14 17:02:39 by brandebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int parse_it(int argc, char **argv)
 				write(2, "Error\nIncorrect number of arguments", 34);
 				exit (0);
 		}
-		if (open(argv[1], O_RDONLY) == 0)
+		if (open(argv[1], O_RDONLY) != 0)
 		{
 				write(2, "Error\nEmpty file", 15);
 				exit (0);
