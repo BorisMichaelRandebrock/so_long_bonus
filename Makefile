@@ -6,13 +6,13 @@
 #    By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/08 13:20:26 by brandebr          #+#    #+#              #
-#    Updated: 2023/11/09 17:46:09 by brandebr         ###   ########.fr        #
+#    Updated: 2023/11/27 18:40:11 by brandebr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
-SRC = main.c parse_it.c
+SRC = main.c parse_it.c get_next_line.c
 
 OBJ = $(SRC:%.c=%.o)
 
@@ -31,7 +31,7 @@ MLX_DIR = ./mlx
 
 all: $(NAME) Makefile
 
-%.o: %.c so_long.h ./Libft/libft.h ./ft_printf/libftprintf.h Makefile
+%.o: %.c so_long.h ./Libft/libft.h ./ft_printf/libftprintf.h ./get_next_line/get_next_line.h Makefile
 	$(CC) $(FLAGS) -c $< -o $@
 
 $(NAME): $(OBJ) $(LIBFT) $(FT_PRINTF) $(MLX)

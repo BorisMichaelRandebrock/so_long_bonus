@@ -6,7 +6,7 @@
 /*   By: brandebr <brandebr@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 17:26:26 by brandebr          #+#    #+#             */
-/*   Updated: 2023/06/09 15:43:11 by brandebr         ###   ########.fr       */
+/*   Updated: 2023/11/27 18:29:01 by brandebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ size_t	ft_strlen(const char *str)
 	size_t	i;
 
 	i = 0;
-	while (*str++)
+	if (!str)
+		return (0);
+	while (str[i])
 		i++;
 	return (i);
 }

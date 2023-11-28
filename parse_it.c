@@ -6,7 +6,7 @@
 /*   By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:18:47 by brandebr          #+#    #+#             */
-/*   Updated: 2023/11/14 17:02:39 by brandebr         ###   ########.fr       */
+/*   Updated: 2023/11/27 16:55:28 by brandebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,20 @@ int	file_name(char	*fn)
 
 int parse_it(int argc, char **argv)
 {
+		int	fd;
+		fd = (open(argv[1], O_RDONLY));
+		char buffer;
+		ssize_t bytes_read = read(fd, &buffer, 1);
+
 		if (argc != 2)
 		{
 				write(2, "Error\nIncorrect number of arguments", 34);
 				exit (0);
 		}
-		if (open(argv[1], O_RDONLY) != 0)
+		if (fd > 0 && bytes_read == 0)
 		{
-				write(2, "Error\nEmpty file", 15);
-				exit (0);
+						write(2, "Error\nEmpty file", 16);
+						exit (0);
 		}
 		if (open(argv[1], O_RDONLY) == -1)
 		{
@@ -58,4 +63,3 @@ int parse_it(int argc, char **argv)
 		}
 		return (0);
 }
-
