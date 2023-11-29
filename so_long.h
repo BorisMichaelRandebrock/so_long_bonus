@@ -6,7 +6,7 @@
 /*   By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 19:17:48 by brandebr          #+#    #+#             */
-/*   Updated: 2023/11/27 18:47:58 by brandebr         ###   ########.fr       */
+/*   Updated: 2023/11/29 18:42:31 by brandebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,6 @@ typedef struct s_map
 }				t_map;
 
 int		parse_it(int argc, char **argv);
+char	*get_next_line(int fd);
 
 #endif
