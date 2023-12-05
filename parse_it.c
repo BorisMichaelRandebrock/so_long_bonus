@@ -6,7 +6,7 @@
 /*   By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:18:47 by brandebr          #+#    #+#             */
-/*   Updated: 2023/11/27 16:55:28 by brandebr         ###   ########.fr       */
+/*   Updated: 2023/12/05 18:57:31 by brandebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,109 @@ int parse_it(int argc, char **argv)
 				exit (0);
 		}
 		return (0);
+}
+
+int		ft_outer_limits(t_map *game)
+{
+		int		i;
+
+		i = 0;
+		while (i < game->width)
+		{
+				if (game->map[0][i] != 1)
+						return (-1);
+				if (game->map[game->height - 1][i] != 1)
+						return (-1);
+				i++;
+		}
+		i = 0;
+		while (i < game->height)
+		{
+				if (game->map[i][0] != 1)
+						return (-1);
+				if (game->map[i][game->width - 1] != 1)
+						return (-1);
+				i++;
+		}
+		return (0);
+}
+
+int		exit_player_check(t_map *game)
+{
+		int		y;
+		int		x;
+		int		player;
+		int		exit;
+		
+		x = 0;
+		y = 0;
+		player = 0;
+		exit = 0;
+		while ((y < game->height) && (x < game->width))
+		{
+				if (game->map[y][x] == 'E')
+						exit++;
+				if (game->map[y][x] == 'P')
+						player++;
+				y++;
+				if (y == game->height)
+				{
+						x++;
+						y = 0;
+				}
+		}
+		if (player != 1 || exit != 1)
+				return (-1);
+		return (0);
+}
+
+int		ft_collectibles(t_map *game)
+{
+		int		y;
+		int		x;
+		int		count;
+
+		x = 0;
+		y = 0;
+		count = 0;
+		while (y < game->height && x < game->width)
+		{
+				if (game->map[y][x] == 'C')
+						count++;
+				else if (game->map[y][x] != 'E' || game->map[y][x] != 'P' ||\
+								game->map[y][x] != '0' || game->map[y][x] != '1')
+						return (-1);
+				y++;
+				if (y == game->height)
+				{
+						x++;
+						y = 0;
+				}
+		}
+		game->coins = count;
+		game->coins_cpy = count;
+		return (0);
+}
+
+int		ft_square_check(t_map *game)
+{
+		int		y;
+		int		a;
+		int		b;
+
+		y = 0;
+		a = ft_strlen(game->map[y]);
+		b = a;
+		while (y < game->height)
+		{
+				b = ft_strlen(game->map[y]);
+				if (b == a)
+						y++;
+				else
+				{
+						ft_free_map(game);
+						write (2, "Error\nThe map is not a square", 29);
+						exit(-1);
+				}
+		}
 }
