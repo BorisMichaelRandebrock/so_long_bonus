@@ -6,7 +6,7 @@
 /*   By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:18:47 by brandebr          #+#    #+#             */
-/*   Updated: 2023/12/05 18:57:31 by brandebr         ###   ########.fr       */
+/*   Updated: 2023/12/05 19:07:57 by brandebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,7 +154,6 @@ int		ft_square_check(t_map *game)
 
 		y = 0;
 		a = ft_strlen(game->map[y]);
-		b = a;
 		while (y < game->height)
 		{
 				b = ft_strlen(game->map[y]);

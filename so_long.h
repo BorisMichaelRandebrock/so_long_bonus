@@ -6,7 +6,7 @@
 /*   By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 19:17:48 by brandebr          #+#    #+#             */
-/*   Updated: 2023/12/05 18:58:10 by brandebr         ###   ########.fr       */
+/*   Updated: 2023/12/06 12:12:07 by brandebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	ft_measures(t_map *game);//ft_read_map.c
 int     ft_outer_limits(t_map *game); //parse_it.c
 int		exit_player_check(t_map *game); //parse_it.c
 int     ft_collectibles(t_map *game); //parse_it.c
-int		ft_square_check(t_map *game); // paarse_it.c								  
+int		ft_rectangle_check(t_map *game); // paarse_it.c								
 void    ft_free_map(t_map *game); //read_map
+
 #endif
