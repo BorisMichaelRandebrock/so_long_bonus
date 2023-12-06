@@ -6,7 +6,7 @@
 /*   By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:18:47 by brandebr          #+#    #+#             */
-/*   Updated: 2023/12/05 19:07:57 by brandebr         ###   ########.fr       */
+/*   Updated: 2023/12/06 14:18:07 by brandebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,8 +131,9 @@ int		ft_collectibles(t_map *game)
 		{
 				if (game->map[y][x] == 'C')
 						count++;
-				else if (game->map[y][x] != 'E' || game->map[y][x] != 'P' ||\
-								game->map[y][x] != '0' || game->map[y][x] != '1')
+				else if (game->map[y][x] != 'E' || game->map[y][x] != 'P'
+								|| game->map[y][x] != '0' 
+								|| game->map[y][x] != '1')
 						return (-1);
 				y++;
 				if (y == game->height)
@@ -141,12 +142,14 @@ int		ft_collectibles(t_map *game)
 						y = 0;
 				}
 		}
+		if (count < 1)
+				return (-1);
 		game->coins = count;
 		game->coins_cpy = count;
 		return (0);
 }
 
-int		ft_square_check(t_map *game)
+int		ft_rectangle_check(t_map *game)
 {
 		int		y;
 		int		a;
@@ -166,4 +169,5 @@ int		ft_square_check(t_map *game)
 						exit(-1);
 				}
 		}
+		return (0);
 }
