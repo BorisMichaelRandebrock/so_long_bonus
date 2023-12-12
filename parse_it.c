@@ -6,7 +6,7 @@
 /*   By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:18:47 by brandebr          #+#    #+#             */
-/*   Updated: 2023/12/06 14:18:07 by brandebr         ###   ########.fr       */
+/*   Updated: 2023/12/12 18:37:27 by brandebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int parse_it(int argc, char **argv)
 		}
 		return (0);
 }
-
+/*
 int		ft_outer_limits(t_map *game)
 {
 		int		i;
@@ -87,7 +87,7 @@ int		ft_outer_limits(t_map *game)
 				i++;
 		}
 		return (0);
-}
+} moved to ft_read_map*/
 
 int		exit_player_check(t_map *game)
 {
