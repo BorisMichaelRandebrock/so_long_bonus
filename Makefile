@@ -6,13 +6,13 @@
 #    By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/08 13:20:26 by brandebr          #+#    #+#              #
-#    Updated: 2023/11/27 18:40:11 by brandebr         ###   ########.fr        #
+#    Updated: 2023/12/13 17:51:00 by brandebr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
-SRC = main.c parse_it.c get_next_line.c
+SRC = main.c parse_it.c ft_read_map.c get_next_line.c flood_map.c 
 
 OBJ = $(SRC:%.c=%.o)
 

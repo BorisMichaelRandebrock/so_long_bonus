@@ -6,7 +6,7 @@
 /*   By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 18:01:03 by brandebr          #+#    #+#             */
-/*   Updated: 2023/12/05 18:57:28 by brandebr         ###   ########.fr       */
+/*   Updated: 2023/12/13 20:07:20 by brandebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,3 +70,28 @@ void	ft_measures(t_map *game)
 				y++;
 		game->height = y;
 }
+
+int		ft_outer_limits(t_map *game)
+{
+		int		i;
+
+		i = 0;
+		while (i < game->width)
+		{
+				if (game->map[0][i] != 1)
+						return (-1);
+				if (game->map[game->height - 1][i] != 1)
+						return (-1);
+				i++;
+		}
+		i = 0;
+		while (i < game->height)
+		{
+				if (game->map[i][0] != 1)
+						return (-1);
+				if (game->map[i][game->width - 1] != 1)
+						return (-1);
+				i++;
+		}
+		return (0);
+} 
