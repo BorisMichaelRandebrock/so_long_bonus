@@ -6,7 +6,7 @@
 #    By: brandebr <brandebr@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/03 10:48:21 by brandebr          #+#    #+#              #
-#    Updated: 2023/06/16 17:27:05 by brandebr         ###   ########.fr        #
+#    Updated: 2023/12/14 15:58:01 by brandebr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ OBJ_BONUS = $(patsubst %.c, %.o, $(BONUS))
 
 CC = cc
 
-FLAGS = -Wall -Werror -Wextra -I.
+FLAGS = -Wall -Werror -Wextra -I. -g
 
 all: $(NAME)
 

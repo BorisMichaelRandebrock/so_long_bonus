@@ -6,7 +6,7 @@
 /*   By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:18:47 by brandebr          #+#    #+#             */
-/*   Updated: 2023/12/13 20:06:28 by brandebr         ###   ########.fr       */
+/*   Updated: 2023/12/14 19:19:11 by brandebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,8 @@ int		ft_outer_limits(t_map *game)
 
 int		exit_player_check(t_map *game)
 {
-		int		y;
-		int		x;
+		unsigned long		y;
+		unsigned long		x;
 		int		player;
 		int		exit;
 		
@@ -120,8 +120,8 @@ int		exit_player_check(t_map *game)
 
 int		ft_collectibles(t_map *game)
 {
-		int		y;
-		int		x;
+		size_t		y;
+		size_t		x;
 		int		count;
 
 		x = 0;
@@ -131,10 +131,11 @@ int		ft_collectibles(t_map *game)
 		{
 				if (game->map[y][x] == 'C')
 						count++;
-				else if (game->map[y][x] != 'E' || game->map[y][x] != 'P'
-								|| game->map[y][x] != '0' 
-								|| game->map[y][x] != '1')
+				else if (game->map[y][x] != 'E' && game->map[y][x] != 'P'
+						&& game->map[y][x] != '0' && game->map[y][x] != '1')
+				{
 						return (-1);
+				}
 				y++;
 				if (y == game->height)
 				{
@@ -151,7 +152,7 @@ int		ft_collectibles(t_map *game)
 
 int		ft_rectangle_check(t_map *game)
 {
-		int		y;
+		unsigned long		y;
 		int		a;
 		int		b;
 

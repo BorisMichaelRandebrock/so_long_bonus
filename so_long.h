@@ -6,7 +6,7 @@
 /*   By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 19:17:48 by brandebr          #+#    #+#             */
-/*   Updated: 2023/12/13 20:08:53 by brandebr         ###   ########.fr       */
+/*   Updated: 2023/12/14 19:44:39 by brandebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,8 @@ int     ft_collectibles(t_map *game); //parse_it.c
 int		ft_rectangle_check(t_map *game); // paarse_it.c								
 void    ft_free_map(t_map *game); //ft_read_map.c
 char	**cpy_map(t_map *game); //flood_map.c
-int		flood_map(t_map *map, int x, int y);//flood_map.c
+int		flood_map(t_map *map, size_t x, size_t y);//flood_map.c
 int     map_check(t_map *game); //main.c
 int		player_position(t_map *game);//main.c
+
 #endif

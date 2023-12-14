@@ -6,13 +6,13 @@
 #    By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/08 13:20:26 by brandebr          #+#    #+#              #
-#    Updated: 2023/12/13 17:51:00 by brandebr         ###   ########.fr        #
+#    Updated: 2023/12/14 16:39:53 by brandebr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
-SRC = main.c parse_it.c ft_read_map.c get_next_line.c flood_map.c 
+SRC = main.c parse_it.c get_next_line.c ft_read_map.c flood_map.c
 
 OBJ = $(SRC:%.c=%.o)
 
@@ -29,12 +29,13 @@ FT_PRINTF_DIR = ./ft_printf
 MLX = ./mlx/libmlx.a
 MLX_DIR = ./mlx
 
-all: $(NAME) Makefile
+all: Makefile
+	$(MAKE) $(NAME)
 
-%.o: %.c so_long.h ./Libft/libft.h ./ft_printf/libftprintf.h ./get_next_line/get_next_line.h Makefile
+%.o: %.c so_long.h ./Libft/libft.h ./ft_printf/ft_printf.h Makefile
 	$(CC) $(FLAGS) -c $< -o $@
 
-$(NAME): $(OBJ) $(LIBFT) $(FT_PRINTF) $(MLX)
+$(NAME): $(LIBFT) $(FT_PRINTF) $(MLX) $(OBJ)
 	$(CC) $(FLAGS) $(OBJ) $(LIBFT) $(FT_PRINTF) $(MLX) -o $(NAME)
 
 $(FT_PRINTF):
@@ -46,9 +47,16 @@ $(LIBFT):
 $(MLX):
 	@make all -C $(MLX_DIR)
 
+clean: 
+	/bin/rm -f $(OBJ)
+	make clean -C $(LIBFT_DIR)
+	make clean -C $(FT_PRINTF_DIR)
+	make clean -C $(MLX_DIR)
+
 fclean: clean
-	/bin/rm -f $(OBJ) $(NAME)
+	/bin/rm -f $(NAME)
 	make fclean -C $(LIBFT_DIR)
+	make fclean -C $(FT_PRINTF_DIR)
 	make fclean -C $(MLX_DIR)
 
 re: fclean all 

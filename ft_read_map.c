@@ -6,7 +6,7 @@
 /*   By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 18:01:03 by brandebr          #+#    #+#             */
-/*   Updated: 2023/12/13 20:07:20 by brandebr         ###   ########.fr       */
+/*   Updated: 2023/12/14 19:19:38 by brandebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ft_read_map(char **argv, t_map *game)
 		while (line)
 		{
 				free(line);
-				get_next_line(fd);
+				line = get_next_line(fd);
 				if (!line)
 						break ;
 				game->raw_map = ft_strjoin(game->raw_map, line);
@@ -73,23 +73,21 @@ void	ft_measures(t_map *game)
 
 int		ft_outer_limits(t_map *game)
 {
-		int		i;
+		unsigned long		i;
 
 		i = 0;
 		while (i < game->width)
 		{
-				if (game->map[0][i] != 1)
-						return (-1);
-				if (game->map[game->height - 1][i] != 1)
+				if (game->map[0][i] != '1' || game->map[game->height -1][i] != '1')
 						return (-1);
 				i++;
 		}
 		i = 0;
 		while (i < game->height)
 		{
-				if (game->map[i][0] != 1)
+				if (game->map[i][0] != '1')
 						return (-1);
-				if (game->map[i][game->width - 1] != 1)
+				if (game->map[i][game->width - 1] != '1')
 						return (-1);
 				i++;
 		}
