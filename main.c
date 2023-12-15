@@ -6,7 +6,7 @@
 /*   By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 17:26:44 by brandebr          #+#    #+#             */
-/*   Updated: 2023/12/15 17:03:22 by brandebr         ###   ########.fr       */
+/*   Updated: 2023/12/15 17:57:42 by brandebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int		map_check(t_map *game)
 		flood_map(game, game->player.x, game->player.y);
 		if (game->coins_cpy != 0)
 		{
-				write (2, "Error\nNo valid path between player and exit", 44);
+				write (2, "ERROR\nNo valid path between player and exit", 44);
 				exit (-1);
 		}
 		return (0);
@@ -67,7 +67,7 @@ int		main(int argc, char **argv)
 		map_check(&game);
 //		if (game.exit != 0)
 //		{
-//				write (2, "Error\nThere's not a path between the p and the exit\n", 57);
+//				write (2, "ERROR\nThere's not a path between the p and the exit\n", 57);
 //				exit (-1);
 //		}
 		write(1, "Hi there Ford", 13);
