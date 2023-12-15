@@ -6,7 +6,7 @@
 /*   By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 17:26:44 by brandebr          #+#    #+#             */
-/*   Updated: 2023/12/14 20:06:07 by brandebr         ###   ########.fr       */
+/*   Updated: 2023/12/15 17:03:22 by brandebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,17 @@
 
 int		player_position(t_map *game)
 {
-		t_pos	player;
-
-		player.x = 0;
-		player.y = 0;
-		while (player.y <= game->height && player.x <= game->width)
+		game->player.x = 0;
+		game->player.y = 0;
+		while (game->player.y <= game->height && game->player.x <= game->width)
 		{
-				if (game->map[player.y][player.x] == 'P')
+				if (game->map[game->player.y][game->player.x] == 'P')
 						return (0);
-				player.x++;
-				if (player.x == game->width)
+				game->player.x++;
+				if (game->player.x == game->width)
 				{
-						player.x = 0;
-						player.y++;
+						game->player.x = 0;
+						game->player.y++;
 				}
 		}
 		return (0);	
@@ -34,7 +32,6 @@ int		player_position(t_map *game)
 
 int		map_check(t_map *game)
 {
-		t_pos	player;
 		if (ft_outer_limits(game) == -1)
 		{
 				ft_free_map(game);
@@ -49,10 +46,7 @@ int		map_check(t_map *game)
 		}
 		ft_rectangle_check(game);
 		player_position(game);
-		printf("Llegamos a flood\n");
-		printf("%zu, %zu", player.x, player.y);
-		flood_map(game, player.x, player.y);
-		printf("Pasamos de flood?\n");
+		flood_map(game, game->player.x, game->player.y);
 		if (game->coins_cpy != 0)
 		{
 				write (2, "Error\nNo valid path between player and exit", 44);

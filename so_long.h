@@ -6,7 +6,7 @@
 /*   By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 19:17:48 by brandebr          #+#    #+#             */
-/*   Updated: 2023/12/14 19:44:39 by brandebr         ###   ########.fr       */
+/*   Updated: 2023/12/15 15:38:53 by brandebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct s_map
 		size_t	coins;
 		size_t	coins_cpy;
 		size_t	exits;
-		size_t player;
+		t_pos	player;
 		int		count;
 		t_pos	start;
 		int		exit;
