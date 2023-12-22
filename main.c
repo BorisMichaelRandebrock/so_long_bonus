@@ -6,7 +6,7 @@
 /*   By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 17:26:44 by brandebr          #+#    #+#             */
-/*   Updated: 2023/12/15 17:57:42 by brandebr         ###   ########.fr       */
+/*   Updated: 2023/12/22 18:25:08 by brandebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,23 @@ int		main(int argc, char **argv)
 		ft_measures(&game);
 		game.map_cpy = cpy_map(&game);
 		map_check(&game);
-//		if (game.exit != 0)
-//		{
-//				write (2, "ERROR\nThere's not a path between the p and the exit\n", 57);
-//				exit (-1);
-//		}
+		if (game.exit != 1)
+		{
+				write (2, "ERROR\nThere's not a path between the p and the exit\n", 57);
+				exit (-1);
+		}
+		game.mlx_ptr = mlx_init();
+		ft_upload_img(&game);
+		game.win_ptr = mlx_new_window(game.mlx_ptr, game.width * SIZE,
+			game.height * SIZE, "a link to the past..");
+		if (game.win_ptr == NULL)
+		{
+				ft_printf("ERROR: Unable to create window\n");
+				 exit(-1);
+		}
+		mlx_hook(game.win_ptr, 2, 0, ft_move, &game);
+		mlx_hook(game.win_ptr, 17, 0, ft_free_all, &game);
+		mlx_loop(game.mlx_ptr);
 		write(1, "Hi there Ford", 13);
 		ft_printf(" 🐬 thanks for all  the fish 🖖");
 		exit (0);

@@ -6,7 +6,7 @@
 /*   By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 19:17:48 by brandebr          #+#    #+#             */
-/*   Updated: 2023/12/15 15:38:53 by brandebr         ###   ########.fr       */
+/*   Updated: 2023/12/22 18:31:46 by brandebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,16 @@
 # include "Libft/libft.h"
 # include "ft_printf/ft_printf.h"
 # include "mlx/mlx.h"
+# define SIZE 32
+
+typedef struct s_img
+{
+	void	*img_ptr;
+	int		*data;
+	int		size_l;
+	int		bpp;
+	int		endian;
+}	t_img;
 
 typedef struct s_pos
 {
@@ -34,11 +44,15 @@ typedef struct s_map
 		size_t	width;
 		size_t	coins;
 		size_t	coins_cpy;
-		size_t	exits;
+	//	size_t	exits;
 		t_pos	player;
 		int		count;
 		t_pos	start;
 		int		exit;
+		void	*mlx_ptr;
+		void	*win_ptr;
+		t_img	*imgs;
+
 }				t_map;
 
 int		parse_it(int argc, char **argv);// parse_it.c
@@ -56,5 +70,17 @@ char	**cpy_map(t_map *game); //flood_map.c
 int		flood_map(t_map *map, size_t x, size_t y);//flood_map.c
 int     map_check(t_map *game); //main.c
 int		player_position(t_map *game);//main.c
+int		ft_move(int keycode, t_map *game);
+void	ft_upload_img(t_map *game);
+int		ft_print_map(t_map *game);
+void    ft_win(t_map *game);
+void	ft_close(t_map *game);
+void	ft_free_map(t_map *game);
+int		ft_free_all(t_map *game);
+int		ft_player_position(int count1, int count2, t_map *game);
+int		ft_o_position(int count1, int count2, t_map *game);
+int		ft_wall_position(int count1, int count2, t_map *game);
+int		ft_exit_position(int count1, int count2, t_map *game);
+int		ft_collect_position(int count1, int count2, t_map *game);
 
 #endif
