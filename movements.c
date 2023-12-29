@@ -6,7 +6,7 @@
 /*   By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 14:11:19 by brandebr          #+#    #+#             */
-/*   Updated: 2023/12/29 13:49:13 by brandebr         ###   ########.fr       */
+/*   Updated: 2023/12/29 16:13:50 by brandebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,25 @@ int	ft_move_w(t_map *game)
 		long int	count;
 
 		count = 0;
-		if ((game->map[game->player.x - 1][game->player.y] != '1')
-						&& (game->player.x - 1 && game->player.y != 'E'))
+		if (game->map[game->player.x - 1][game->player.y] == 'E' && game->coins == 0)
 		{
-				if (game->player.x - 1 && game->player.y == 'C')
-						game->coins = game->coins -1;
-			//	(game->player.x = '0') && (game->player.y = '0');
+			game->map[game->player.x][game->player.y] = '0';
+			printf("YOU WON!!! 🥳\n");
+			ft_win(game);
+			exit(1);
+		}
+		if ((game->map[game->player.x - 1][game->player.y] != '1')
+						&& game->map[game->player.x - 1][game->player.y] != 'E')
+		{
+				if (game->map[game->player.x - 1][game->player.y] == 'C')
+						game->coins--;
 				game->map[game->player.x][game->player.y] = '0';
 				game->player.x = game->player.x - 1;
-			//	(game->player.x = 'P') && (game->player.y = 'P');
 				game->map[game->player.x][game->player.y] = 'P';
 				game->count = game->count + 1;
-				ft_printf("Movements number: %d\n", game->count);
+				ft_printf("Movements: %d\n", game->count);
 				ft_print_map (game);
 		}
-		else if (game->coins == 0 && (game->player.x -1 == 'E') 
-						&& (game->player.y == 'E'))
-				ft_win(game);
 		return (0);
 }
 
@@ -42,23 +44,24 @@ int	ft_move_s(t_map *game)
 		long int	count;
 
 		count = 0;
-		if ((game->map[game->player.x + 1][game->player.y] != '1')
-						&& (game->player.x + 1 && game->player.y != 'E'))
+		if ((game->coins == 0) && game->map[game->player.x + 1][game->player.y] == 'E')
 		{
-				if (game->player.x +1 && game->player.y == 'C')
-						game->coins = game->coins -1;
-			//	(game->player.x = '0') && (game->player.y = '0');
+				game->map[game->player.x][game->player.y] = '0';
+				printf("YOU 🗽 WON!!!\n");
+				ft_win(game);
+		}
+		if ((game->map[game->player.x + 1][game->player.y] != '1')
+						&& game->map[game->player.x + 1][game->player.y] != 'E')
+		{
+				if (game->map[game->player.x + 1][game->player.y] == 'C')
+						game->coins--;
 				game->map[game->player.x][game->player.y] = '0';
 				game->player.x = game->player.x +1;
-			//	(game->player.x = 'P') && (game->player.y = 'P');
 				game->map[game->player.x][game->player.y] = 'P';
 				game->count = game->count +1;
-				ft_printf("Movements number: %d\n", game->count);
+				ft_printf("Movements: %d\n", game->count);
 				ft_print_map (game);
 		}
-		else if ((game->coins == 0) && (game->player.x + 1 == 'E') 
-						&& (game->player.y == 'E'))
-				ft_win(game);
 		return (0);
 }
 
@@ -67,24 +70,25 @@ int	ft_move_a(t_map *game)
 		long int	count;
 
 		count = 0;
-		if ((game->map[game->player.x][game->player.y -1]  != '1')
-						&& (game->player.x && game->player.y - 1 != 'E'))
+		if ((game->map[game->player.x][game->player.y - 1] == 'E' && game->coins == 0))
 		{
-				//printf("1\n %zu, %zu\n", game->player.x, game->player.y);
-				if (game->player.x && game->player.y - 1 == 'C')
-						game->coins = game->coins - 1;
-				//(game->player.x = '0') && (game->player.y = '0');
+			game->map[game->player.x][game->player.y] = '0';
+			printf("🥇 YOU WON!!!\n");
+			ft_win(game);
+			exit(1);
+		}
+		if ((game->map[game->player.x][game->player.y - 1]  != '1')
+						&& game->map[game->player.x][game->player.y - 1] != 'E')
+		{
+				if (game->map[game->player.x][game->player.y - 1] == 'C')
+						game->coins--;
 				game->map[game->player.x][game->player.y] = '0';
 				game->player.y = game->player.y -1 ;
 				game->map[game->player.x][game->player.y] = 'P';
-//				(game->player.x = 'P') && (game->player.y = 'P');
 				game->count = game->count + 1;
-				ft_printf("Movements number: %d\n", game->count);
+				ft_printf("Movements: %d\n", game->count);
 				ft_print_map (game);
 		}
-		else if (game->coins == 0 && (game->player.x == 'E') 
-						&& (game->player.y - 1 == 'E'))
-				ft_win(game);
 		return (0);
 }
 
@@ -93,22 +97,25 @@ int	ft_move_d(t_map *game)
 		long int	count;
 
 		count = 0;
-		if ((game->map[game->player.x][game->player.y +1] != '1')
-						&& (game->player.x && game->player.y +1 != 'E'))
+		if ((game->map[game->player.x][game->player.y +1] == 'E' && game->coins == 0))
 		{
-				if (game->player.x && game->player.y +1 == 'C')
-						game->coins = game->coins -1;
 				game->map[game->player.x][game->player.y] = '0';
-//				(game->player.x == '0') && (game->player.y = '0');
+				printf("YOU WON!!! 🧸\n");
+				ft_win(game);
+				exit(1);
+		}
+		if ((game->map[game->player.x][game->player.y +1] != '1')
+						&& game->map[game->player.x][game->player.y +1] != 'E')
+		{
+				if (game->map[game->player.x][game->player.y + 1] == 'C')
+						game->coins--;
+				game->map[game->player.x][game->player.y] = '0';
 				game->player.y = game->player.y +1;
 				game->map[game->player.x][game->player.y] = 'P';
-//				(game->player.x = 'P') && (game->player.y = 'P');
 				game->count = game->count +1;
-				ft_printf("Movements number: %d\n", game->count);
+				ft_printf("Movements: %d\n", game->count);
 				ft_print_map (game);
 		}
-		else if (game->coins == 0 && (game->player.x =='E') && (game->player.y +1 == 'E'))
-				ft_win(game);
 		return (0);
 }
 int	ft_move(int keycode, t_map *game)
@@ -132,9 +139,9 @@ void	ft_win(t_map *game)
 
 		c = 0;
 		game->count = game->count +1;
-		ft_printf("Movements number: %d\n", game->count);
+		ft_printf("Total number of movements: %d\n", game->count);
 		mlx_string_put(game->mlx_ptr, game->win_ptr, 15,
-						15, 66000000, "CONGRATULATIONS\n");
+						15, 00006600, "CONGRATULATIONS YOU WIN!!!\n");
 		mlx_do_sync(game->mlx_ptr);
 		while (c < 1000000000)
 				c++;
