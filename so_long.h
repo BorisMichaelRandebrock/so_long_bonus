@@ -6,7 +6,7 @@
 /*   By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 19:17:48 by brandebr          #+#    #+#             */
-/*   Updated: 2023/12/22 18:31:46 by brandebr         ###   ########.fr       */
+/*   Updated: 2023/12/29 11:03:46 by brandebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include "ft_printf/ft_printf.h"
 # include "mlx/mlx.h"
 # define SIZE 32
+//#define IMG_WIDTH  32
+//#define IMG_HEIGHT 32
 
 typedef struct s_img
 {
