@@ -6,7 +6,7 @@
 /*   By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 14:11:19 by brandebr          #+#    #+#             */
-/*   Updated: 2023/12/29 16:13:50 by brandebr         ###   ########.fr       */
+/*   Updated: 2023/12/29 19:23:48 by brandebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_move_w(t_map *game)
 		if (game->map[game->player.x - 1][game->player.y] == 'E' && game->coins == 0)
 		{
 			game->map[game->player.x][game->player.y] = '0';
-			printf("YOU WON!!! 🥳\n");
+			ft_printf("YOU WON!!! 🥳\n");
 			ft_win(game);
 			exit(1);
 		}
@@ -47,7 +47,7 @@ int	ft_move_s(t_map *game)
 		if ((game->coins == 0) && game->map[game->player.x + 1][game->player.y] == 'E')
 		{
 				game->map[game->player.x][game->player.y] = '0';
-				printf("YOU 🗽 WON!!!\n");
+				ft_printf("YOU 🗽 WON!!!\n");
 				ft_win(game);
 		}
 		if ((game->map[game->player.x + 1][game->player.y] != '1')
@@ -73,7 +73,7 @@ int	ft_move_a(t_map *game)
 		if ((game->map[game->player.x][game->player.y - 1] == 'E' && game->coins == 0))
 		{
 			game->map[game->player.x][game->player.y] = '0';
-			printf("🥇 YOU WON!!!\n");
+			ft_printf("🥇 YOU WON!!!\n");
 			ft_win(game);
 			exit(1);
 		}
@@ -100,7 +100,7 @@ int	ft_move_d(t_map *game)
 		if ((game->map[game->player.x][game->player.y +1] == 'E' && game->coins == 0))
 		{
 				game->map[game->player.x][game->player.y] = '0';
-				printf("YOU WON!!! 🧸\n");
+				ft_printf("YOU WON!!! 🧸\n");
 				ft_win(game);
 				exit(1);
 		}
@@ -120,13 +120,13 @@ int	ft_move_d(t_map *game)
 }
 int	ft_move(int keycode, t_map *game)
 {
-		if (keycode == 13)
+		if (keycode == 13 || keycode == 126)
 				ft_move_w(game);
-		if (keycode == 0)
+		if (keycode == 0 || keycode == 123)
 				ft_move_a(game);
-		if (keycode == 1)
+		if (keycode == 1 || keycode == 125)
 				ft_move_s(game);
-		if (keycode == 2)
+		if (keycode == 2 || keycode == 124)
 				ft_move_d(game);
 		if (keycode == 53)
 				exit(1);
@@ -141,7 +141,7 @@ void	ft_win(t_map *game)
 		game->count = game->count +1;
 		ft_printf("Total number of movements: %d\n", game->count);
 		mlx_string_put(game->mlx_ptr, game->win_ptr, 15,
-						15, 00006600, "CONGRATULATIONS YOU WIN!!!\n");
+						30, 0xFFFFFF, "CONGRATULATIONS YOU WIN!!!\n");
 		mlx_do_sync(game->mlx_ptr);
 		while (c < 1000000000)
 				c++;
