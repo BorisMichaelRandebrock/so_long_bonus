@@ -6,7 +6,7 @@
 /*   By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 17:26:44 by brandebr          #+#    #+#             */
-/*   Updated: 2023/12/22 18:25:08 by brandebr         ###   ########.fr       */
+/*   Updated: 2023/12/29 12:46:45 by brandebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,18 +67,19 @@ int		main(int argc, char **argv)
 		map_check(&game);
 		if (game.exit != 1)
 		{
-				write (2, "ERROR\nThere's not a path between the p and the exit\n", 57);
+				write (2, "ERROR\nNo path between p and exit\n", 33);
 				exit (-1);
 		}
 		game.mlx_ptr = mlx_init();
 		ft_upload_img(&game);
 		game.win_ptr = mlx_new_window(game.mlx_ptr, game.width * SIZE,
-			game.height * SIZE, "a link to the past..");
+						game.height * SIZE, "a link to the past..");
 		if (game.win_ptr == NULL)
 		{
 				ft_printf("ERROR: Unable to create window\n");
-				 exit(-1);
+				exit(-1);
 		}
+		ft_print_map(&game);
 		mlx_hook(game.win_ptr, 2, 0, ft_move, &game);
 		mlx_hook(game.win_ptr, 17, 0, ft_free_all, &game);
 		mlx_loop(game.mlx_ptr);

@@ -6,16 +6,17 @@
 #    By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/08 13:20:26 by brandebr          #+#    #+#              #
-#    Updated: 2023/12/22 18:28:52 by brandebr         ###   ########.fr        #
+#    Updated: 2023/12/29 12:07:42 by brandebr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
 SRC = main.c parse_it.c get_next_line.c ft_read_map.c flood_map.c movements.c\
-	    upload_img.c exit.c position.c
+	  upload_img.c exit.c position.c
 
-LIBS = -L./Libft -lft -L./ft_printf -lftprintf -L./mlx -lmlx -framework OpenGL -framework AppKit
+LIBS = -L./Libft -lft -L./ft_printf -lftprintf -L./mlx -lmlx -framework OpenGL \
+	   -framework AppKit
 
 OBJ = $(SRC:%.c=%.o)
 
@@ -40,7 +41,7 @@ all: Makefile
 
 $(NAME): $(LIBFT) $(FT_PRINTF) $(MLX) $(OBJ)
 	$(CC) $(FLAGS) $(OBJ) $(LIBS) -o $(NAME)
-#	$(CC) $(FLAGS) $(OBJ) $(LIBFT) $(FT_PRINTF) $(MLX) -o $(NAME)
+	#	$(CC) $(FLAGS) $(OBJ) $(LIBFT) $(FT_PRINTF) $(MLX) -o $(NAME)
 
 $(FT_PRINTF):
 	@make all -C $(FT_PRINTF_DIR)
