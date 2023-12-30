@@ -6,7 +6,7 @@
 /*   By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 17:26:44 by brandebr          #+#    #+#             */
-/*   Updated: 2023/12/30 13:36:05 by brandebr         ###   ########.fr       */
+/*   Updated: 2023/12/30 15:41:41 by brandebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,3 +104,4 @@ int	main(int argc, char **argv)
 	mlx_loop(game.mlx_ptr);
 	exit (0);
 }
+//system("leaks so_long");
