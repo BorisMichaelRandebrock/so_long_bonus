@@ -6,7 +6,7 @@
 /*   By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 16:44:48 by brandebr          #+#    #+#             */
-/*   Updated: 2023/12/30 14:33:31 by brandebr         ###   ########.fr       */
+/*   Updated: 2023/12/30 16:09:58 by brandebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,36 +49,31 @@ void	ft_upload_img(t_map *game)
 
 int	ft_print_map(t_map *game)
 {
-	size_t	y;
-	size_t	x;
-
-	y = 0;
-	x = 0;
-	while (y <= game->height && x <= game->width)
+	game->y = 0;
+	game->x = 0;
+	while (game->y <= game->height && game->x <= game->width)
 	{
-		if (game->map[y][x] == '0')
-			ft_o_position(y, x, game);
-		else if (game->map[y][x] == '1')
-			ft_wall_position(y, x, game);
-		else if (game->map[y][x] == 'E')
-			ft_exit_position(y, x, game);
-		else if (game->map[y][x] == 'P')
-			ft_player_position(y, x, game);
-		else if (game->map[y][x] == 'C')
-			ft_collect_position(y, x, game);
-		y++;
-		if (y == game->height)
+		if (game->map[game->y][game->x] == '0')
+			ft_o_position(game->y, game->x, game);
+		else if (game->map[game->y][game->x] == '1')
+			ft_wall_position(game->y, game->x, game);
+		else if (game->map[game->y][game->x] == 'E')
+			ft_exit_position(game->y, game->x, game);
+		else if (game->map[game->y][game->x] == 'P')
+			ft_player_position(game->y, game->x, game);
+		else if (game->map[game->y][game->x] == 'C')
+			ft_collect_position(game->y, game->x, game);
+		else if (game->map[game->y][game->x] == 'F')
+			ft_fake_position(game->y, game->x, game);
+		game->y++;
+		if (game->y == game->height)
 		{
-			x++;
-			y = 0;
+			game->x++;
+			game->y = 0;
 		}
 	}
 	return (0);
 }
-/*
-   else if (game->map[y][x] == 'F')
-   ft_fake_position(y, x, game);
-*/
 
 void	inc_num_args(void)
 {
@@ -92,3 +87,7 @@ int	ft_cant(char c)
 		return (-1);
 	return (1);
 }
+/*	size_t	y;
+	size_t	x;
+	moved to struct in so_long.h
+	*/	

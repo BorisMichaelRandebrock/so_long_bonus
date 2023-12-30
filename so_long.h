@@ -6,7 +6,7 @@
 /*   By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 19:17:48 by brandebr          #+#    #+#             */
-/*   Updated: 2023/12/30 15:47:42 by brandebr         ###   ########.fr       */
+/*   Updated: 2023/12/30 16:00:43 by brandebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ typedef struct s_map
 	void	*mlx_ptr;
 	void	*win_ptr;
 	t_img	*imgs;
+	size_t	x;
+	size_t	y;
 
 }				t_map;
 
