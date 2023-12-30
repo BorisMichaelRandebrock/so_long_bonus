@@ -6,7 +6,7 @@
 /*   By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 18:05:27 by brandebr          #+#    #+#             */
-/*   Updated: 2023/06/14 14:40:28 by brandebr         ###   ########.fr       */
+/*   Updated: 2023/12/30 16:21:43 by brandebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 
 t_list	*ft_lstlast(t_list *lst)
 {
-	int	i;
-
-	i = 0;
 	if (!lst)
 		return (NULL);
 	while (lst -> next)

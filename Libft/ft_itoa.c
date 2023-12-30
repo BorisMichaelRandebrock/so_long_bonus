@@ -6,7 +6,7 @@
 /*   By: brandebr <brandebr@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 13:18:12 by brandebr          #+#    #+#             */
-/*   Updated: 2023/06/13 13:44:16 by brandebr         ###   ########.fr       */
+/*   Updated: 2023/12/30 16:19:05 by brandebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,9 @@ static	void	mn_nr(char *str)
 
 char	*ft_itoa(int n)
 {
-	int		i;
 	int		len;
 	char	*str;
 
-	i = 0;
 	len = num_counter(n);
 	str = (char *)malloc(sizeof(char) * (len + 1));
 	if (!str)
