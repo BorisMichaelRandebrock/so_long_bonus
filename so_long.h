@@ -6,7 +6,7 @@
 /*   By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 19:17:48 by brandebr          #+#    #+#             */
-/*   Updated: 2023/12/29 11:03:46 by brandebr         ###   ########.fr       */
+/*   Updated: 2023/12/30 14:33:29 by brandebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ typedef struct s_map
 	//	size_t	exits;
 		t_pos	player;
 		int		count;
+		int		flag;
 		t_pos	start;
 		int		exit;
 		void	*mlx_ptr;
@@ -84,5 +85,8 @@ int		ft_o_position(int count1, int count2, t_map *game);
 int		ft_wall_position(int count1, int count2, t_map *game);
 int		ft_exit_position(int count1, int count2, t_map *game);
 int		ft_collect_position(int count1, int count2, t_map *game);
+void	ft_win(t_map *game); //main.c
+void	inc_num_args(void); // upload_img.c
+int		ft_cant(char c); //upload_img.c
 
 #endif

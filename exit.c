@@ -6,12 +6,11 @@
 /*   By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 17:28:26 by brandebr          #+#    #+#             */
-/*   Updated: 2023/12/29 10:51:33 by brandebr         ###   ########.fr       */
+/*   Updated: 2023/12/30 11:51:09 by brandebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
 
 void	ft_close(t_map *game)
 {
