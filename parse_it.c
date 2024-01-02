@@ -6,7 +6,7 @@
 /*   By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:18:47 by brandebr          #+#    #+#             */
-/*   Updated: 2023/12/30 14:36:16 by brandebr         ###   ########.fr       */
+/*   Updated: 2024/01/02 17:51:22 by brandebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,17 +47,17 @@ int	parse_it(int argc, char **argv)
 	if (fd > 0 && bytes_read == 0)
 	{
 		write(2, "Error\nEmpty file", 16);
-		exit (0);
+		exit (1);
 	}
 	if (open(argv[1], O_RDONLY) == -1)
 	{
 		write(2, "Error\nWrong file reading", 23);
-		exit (0);
+		exit (1);
 	}
 	if (file_name(argv[1]) == -1)
 	{
 		write(2, "Error\nWrong file type", 21);
-		exit (0);
+		exit (1);
 	}
 	return (0);
 }
@@ -162,7 +162,7 @@ int	ft_rectangle_check(t_map *game)
 		{
 			ft_free_map(game);
 			write (2, "Error\nThe map is not a square", 29);
-			exit(-1);
+			exit(1);
 		}
 	}
 	return (0);

@@ -6,7 +6,7 @@
 #    By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/08 13:20:26 by brandebr          #+#    #+#              #
-#    Updated: 2023/12/30 17:49:10 by brandebr         ###   ########.fr        #
+#    Updated: 2024/01/02 16:24:03 by brandebr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ OBJ = $(SRC:%.c=%.o)
 
 CC = cc
 
-FLAGS = -Wall -Wextra -Werror -fsanitize=address -g -I. -I./libft -I./ft_printf
+FLAGS = -Wall -Wextra -Werror -g -I. -I./libft -I./ft_printf
 
 LIBFT = ./Libft/libft.a
 LIBFT_DIR = ./libft

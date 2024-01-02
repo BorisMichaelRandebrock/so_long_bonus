@@ -6,7 +6,7 @@
 /*   By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 17:26:44 by brandebr          #+#    #+#             */
-/*   Updated: 2023/12/30 15:41:41 by brandebr         ###   ########.fr       */
+/*   Updated: 2024/01/02 16:34:53 by brandebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,13 @@ int	map_check(t_map *game)
 	{
 		ft_free_map(game);
 		write(2, "ERROR\nThe Board is not correctly defined\n", 41);
-		exit (-1);
+		exit (1);
 	}
 	if ((ft_collectibles(game) == -1) || (exit_player_check(game) == -1))
 	{
 		ft_free_map(game);
 		write(2, "ERROR\nWrong Players, exits or collectibles", 43);
-		exit (-1);
+		exit (1);
 	}
 	ft_rectangle_check(game);
 	player_position(game);
@@ -50,7 +50,7 @@ int	map_check(t_map *game)
 	if (game->coins_cpy != 0)
 	{
 		write (2, "ERROR\nNo valid path between player and exit", 44);
-		exit (-1);
+		exit (1);
 	}
 	return (0);
 }
@@ -58,7 +58,7 @@ int	map_check(t_map *game)
 void	no_path(void)
 {
 	write (2, "ERROR\nNo path between p and exit\n", 33);
-	exit (-1);
+	exit (1);
 }
 
 void	ft_win(t_map *game)
@@ -74,7 +74,7 @@ void	ft_win(t_map *game)
 	while (c < 1000000000)
 		c++;
 	ft_free_all(game);
-	exit(-1);
+	exit(1);
 }
 
 int	main(int argc, char **argv)
@@ -96,7 +96,7 @@ int	main(int argc, char **argv)
 	if (game.win_ptr == NULL)
 	{
 		ft_printf("ERROR: Unable to create window\n");
-		exit(-1);
+		exit(1);
 	}
 	ft_print_map(&game);
 	mlx_hook(game.win_ptr, 2, 0, ft_move, &game);
