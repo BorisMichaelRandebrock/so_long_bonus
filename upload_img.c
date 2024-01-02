@@ -6,7 +6,7 @@
 /*   By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 16:44:48 by brandebr          #+#    #+#             */
-/*   Updated: 2023/12/30 16:09:58 by brandebr         ###   ########.fr       */
+/*   Updated: 2024/01/02 16:05:41 by brandebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	inc_num_args(void)
 
 int	ft_cant(char c)
 {
-	if (c != 'E' && c != 'P' && c != '0' && c != '1' && c != 'F' && c != 'P')
+	if (c != 'E' && c != 'P' && c != '0' && c != '1' && c != 'E' && c != 'P')
 		return (-1);
 	return (1);
 }

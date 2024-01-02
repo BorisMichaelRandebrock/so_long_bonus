@@ -6,7 +6,7 @@
 #    By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/21 16:28:59 by brandebr          #+#    #+#              #
-#    Updated: 2023/06/27 11:44:57 by brandebr         ###   ########.fr        #
+#    Updated: 2024/01/02 15:54:50 by brandebr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ OBJ = $(SRC:.c=.o)
 
 CC = cc
 
-FLAGS = -Wall -Wextra -Werror -I.
+FLAGS = -Wall -Wextra -Werror -I. -DV=1
 
 all: $(NAME)
 
@@ -27,13 +27,13 @@ all: $(NAME)
 	$(CC) $(FLAGS) -c $< -o $@
 
 $(NAME): $(OBJ)
-	ar rcs $@ $^ $(NAME)
+	ar rcs $@ $^
 
 clean:
 	/bin/rm -f $(OBJ)
 
 fclean: clean
-	 /bin/rm -f $(NAME)
+	/bin/rm -f $(NAME)
 
 re: fclean all
 

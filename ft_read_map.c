@@ -6,7 +6,7 @@
 /*   By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 18:01:03 by brandebr          #+#    #+#             */
-/*   Updated: 2023/12/30 18:12:58 by brandebr         ###   ########.fr       */
+/*   Updated: 2024/01/02 13:48:02 by brandebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,13 @@ void	ft_measures(t_map *game)
 
 	x = 0;
 	y = 0;
-	game->map = ft_split(game->raw_map, '\n');
+	game->map = ft_split(game->raw_map, '\n');	
+	if (!game->map[0])
+	{
+		write(2, "Error\nEmpty file", 16);
+		free(game->map);
+		exit (0);
+	}
 	while (game->map[0][x])
 		x++;
 	game->width = x;

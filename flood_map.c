@@ -6,7 +6,7 @@
 /*   By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 18:37:49 by brandebr          #+#    #+#             */
-/*   Updated: 2023/12/30 13:04:21 by brandebr         ###   ########.fr       */
+/*   Updated: 2024/01/02 15:52:54 by brandebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ char	**cpy_map(t_map *game)
 		return (NULL);
 	while (game->map[c])
 	{
+		if ((unsigned int)c == game->width + 1)
+				return (0);
 		map_cpy[c] = ft_strdup(game->map[c]);
 		c++;
 	}
