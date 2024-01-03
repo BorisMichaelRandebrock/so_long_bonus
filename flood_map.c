@@ -6,7 +6,7 @@
 /*   By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 18:37:49 by brandebr          #+#    #+#             */
-/*   Updated: 2024/01/03 14:10:49 by brandebr         ###   ########.fr       */
+/*   Updated: 2024/01/03 18:26:41 by brandebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,24 +36,22 @@ char	**cpy_map(t_map *game)
 
 int	flood_map(t_map *game, size_t x, size_t y)
 {
+//	printf("%c\n", game->map_cpy[x][y]);
 	if (game->map_cpy[x][y] == 'V' || game->map_cpy[x][y] == '1'
 					|| (game->map_cpy[x][y] == 'E' && game->coins_cpy != 0))
 		return (-1);
+//	printf("%c\n", game->map_cpy[x][y]);
 	if (game->map_cpy[x][y] == 'C')
 	{
 		game->coins_cpy--;
-		ft_printf("coins found: %i\n", (int)game->coins_cpy);
 		game->map_cpy[x][y] = 'V';
 		if (game->coins_cpy == 0)
 			game->flag = 1;
 	}
-	if (game->map_cpy[x][y] == 'E' && game->coins_cpy == 0)
+/*	if (game->map_cpy[x][y] == 'E' && game->coins_cpy == 0)
 	{
-		//	game->ex++;
-		//	ft_printf("exit found: %i\n", game->ex);
-		//	game->exit--;
-			game->map_cpy[x][y] = 'V';
-	}
+		game->map_cpy[x][y] = 'V';
+	}*/
 	game->map_cpy[x][y] = 'V';
 	flood_map(game, x + 1, y);
 	flood_map(game, x - 1, y);
@@ -61,25 +59,24 @@ int	flood_map(t_map *game, size_t x, size_t y)
 	flood_map(game, x, y - 1);
 	return (-1);
 }
-
-int	ft_check_exit(t_map *game, size_t x, size_t y)
+/*
+void	ft_check_exit(t_map *game, size_t x, size_t y)
 {
-		if ((game->map_cpy2[x][y] == 'V') || (game->map_cpy2[x][y] == '1'))
-				return (-1);
-		if (game->map_cpy2[x][y] == 'E')
-		{
-				game->ex++;
-			//	return (0);
-		//		game->map_cpy2[x][y] = 'V';
-				printf("found the exit");
-		}
-		game->map_cpy2[x][y] = 'V';
-		ft_check_exit(game, x -1, y);
-		ft_check_exit(game, x, y +1);
-		ft_check_exit(game, x +1, y);
-		ft_check_exit(game, x, y -1);
-		return (-1);
-}
+//	if ((y < 0 || x < 0) || (y == game->height) || (x == game->width))
+//		return ;
+	if ((game->map_cpy2[x][y] == 'V') || (game->map_cpy2[x][y] == '1'))
+		return ;
+	if (game->map_cpy2[x][y] == 'E')
+	{
+		game->ex++;
+	}
+	game->map_cpy2[x][y] = 'V';
+	ft_check_exit(game, x -1, y);
+	ft_check_exit(game, x, y +1);
+	ft_check_exit(game, x +1, y);
+	ft_check_exit(game, x, y -1);
+	return ;
+}*/
 /*int	flood_map(t_map *game, size_t x, size_t y)
 {
 	int		flag;

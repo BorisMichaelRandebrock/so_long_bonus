@@ -6,7 +6,7 @@
 /*   By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 17:26:44 by brandebr          #+#    #+#             */
-/*   Updated: 2024/01/03 14:29:17 by brandebr         ###   ########.fr       */
+/*   Updated: 2024/01/03 19:46:36 by brandebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,20 +32,22 @@ int	player_position(t_map *game)
 
 int	map_check(t_map *game)
 {
-	if (ft_outer_limits(game) == -1)
-	{
-		ft_free_map(game);
-		write(2, "ERROR\nThe Board is not correctly defined\n", 41);
-		exit (1);
-	}
-	if ((ft_collectibles(game) == -1) || (exit_player_check(game) == -1))
-	{
-		ft_free_map(game);
-		write(2, "ERROR\nWrong Players, exits or collectibles", 43);
-		exit (1);
-	}
-	ft_rectangle_check(game);
-	player_position(game);
+			printf("TOMATE\n");
+	(void)game;
+//	if (ft_outer_limits(game) == -1)
+//	{
+//		ft_free_map(game);
+//		write(2, "ERROR\nThe Board is not correctly defined\n", 41);
+//		exit (1);
+//	}
+//	if ((ft_collectibles(game) == -1) || (exit_player_check(game) == -1))
+//	{
+//		ft_free_map(game);
+//		write(2, "ERROR\nWrong Players, exits or collectibles", 43);
+//		exit (1);
+//	}
+//	ft_rectangle_check(game);
+//	player_position(game);
 	flood_map(game, game->player.x, game->player.y);
 	ft_check_exit(game, game->player.x, game->player.y);
 	if (game->coins_cpy != 0 || game->ex != 1)
@@ -54,12 +56,6 @@ int	map_check(t_map *game)
 		exit (1);
 	}
 	return (0);
-}
-
-void	no_path(void)
-{
-	write (2, "ERROR\nNo path between p and exit\n", 33);
-	exit (1);
 }
 
 void	ft_win(t_map *game)
@@ -78,6 +74,54 @@ void	ft_win(t_map *game)
 	exit(1);
 }
 
+void	ft_check_exit(t_map *game, size_t x, size_t y)
+{
+//		write(1, "NO!\n", 4);
+//	size_t	rows;
+//	size_t	cols;
+
+
+//	rows = game->map_cpy.x;
+//	cols = game->map_cpy->y;
+
+	if ((y < 0 || x < 0) || (y == game->height) || (x == game->width))
+		return ;
+//	printf("%c\n", game->map_cpy2[x][y]);
+	if ((game->map_cpy2[x][y] == 'V') || (game->map_cpy2[x][y] == '1'))
+		return ;
+//	printf("%c\n", game->map_cpy2[x][y]);
+	if (game->map_cpy2[x][y] == 'E')
+	{
+//			printf("%c", game->map_cpy2[x][y]);
+		game->ex++;
+	}
+//	printf("%c", game->map_cpy2[x][y]);
+	game->map_cpy2[x][y] = 'V';
+	ft_check_exit(game, x -1, y);
+	ft_check_exit(game, x, y +1);
+	ft_check_exit(game, x +1, y);
+	ft_check_exit(game, x, y -1);
+	return ;
+}
+
+#include <stdio.h>
+
+void tokemo(char **arr, int line)
+{
+	int	i;
+
+	i = 0;
+	if (arr == NULL)
+		return ;
+	while (arr[i] != NULL)
+	{
+		printf("%s", arr[i]);
+		if (line)
+			printf("\n");
+		i++;
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	t_map	game;
@@ -85,12 +129,12 @@ int	main(int argc, char **argv)
 	game.count = 0;
 	parse_it(argc, argv);
 	ft_read_map(argv, &game);
+	tokemo(game.map, 0);
+	printf("TOMATito\n");
 	ft_measures(&game);
-	game.map_cpy = cpy_map(&game);
-	game.map_cpy2 = cpy_map(&game);
+//	game.map_cpy = cpy_map(&game);
+//	game.map_cpy2 = cpy_map(&game);
 	map_check(&game);
-//	if (game.exit != 1)
-//		no_path();
 	game.mlx_ptr = mlx_init();
 	ft_upload_img(&game);
 	game.win_ptr = mlx_new_window(game.mlx_ptr, game.width * SIZE,
@@ -107,3 +151,12 @@ int	main(int argc, char **argv)
 	exit (0);
 }
 //system("leaks so_long");
+//	if (game.exit != 1)
+//		no_path();
+/*
+void	no_path(void)
+{
+	write (2, "ERROR\nNo path between p and exit\n", 33);
+	exit (1);
+}
+*/
