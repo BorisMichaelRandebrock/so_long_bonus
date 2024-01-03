@@ -6,7 +6,7 @@
 /*   By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 17:26:44 by brandebr          #+#    #+#             */
-/*   Updated: 2024/01/02 16:34:53 by brandebr         ###   ########.fr       */
+/*   Updated: 2024/01/03 14:29:17 by brandebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ int	map_check(t_map *game)
 	ft_rectangle_check(game);
 	player_position(game);
 	flood_map(game, game->player.x, game->player.y);
-	if (game->coins_cpy != 0)
+	ft_check_exit(game, game->player.x, game->player.y);
+	if (game->coins_cpy != 0 || game->ex != 1)
 	{
 		write (2, "ERROR\nNo valid path between player and exit", 44);
 		exit (1);
@@ -86,9 +87,10 @@ int	main(int argc, char **argv)
 	ft_read_map(argv, &game);
 	ft_measures(&game);
 	game.map_cpy = cpy_map(&game);
+	game.map_cpy2 = cpy_map(&game);
 	map_check(&game);
-	if (game.exit != 1)
-		no_path();
+//	if (game.exit != 1)
+//		no_path();
 	game.mlx_ptr = mlx_init();
 	ft_upload_img(&game);
 	game.win_ptr = mlx_new_window(game.mlx_ptr, game.width * SIZE,

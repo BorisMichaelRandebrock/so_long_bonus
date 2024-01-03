@@ -6,7 +6,7 @@
 /*   By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:18:47 by brandebr          #+#    #+#             */
-/*   Updated: 2024/01/02 17:51:22 by brandebr         ###   ########.fr       */
+/*   Updated: 2024/01/03 14:17:57 by brandebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int	parse_it(int argc, char **argv)
 	ssize_t	bytes_read;
 
 	fd = (open(argv[1], O_RDONLY));
+
 	bytes_read = read(fd, &buffer, 1);
 	if (argc != 2)
 		inc_num_args();
@@ -49,7 +50,7 @@ int	parse_it(int argc, char **argv)
 		write(2, "Error\nEmpty file", 16);
 		exit (1);
 	}
-	if (open(argv[1], O_RDONLY) == -1)
+	if (fd == -1)
 	{
 		write(2, "Error\nWrong file reading", 23);
 		exit (1);
@@ -59,6 +60,7 @@ int	parse_it(int argc, char **argv)
 		write(2, "Error\nWrong file type", 21);
 		exit (1);
 	}
+	close(fd);
 	return (0);
 }
 /*

@@ -6,7 +6,7 @@
 /*   By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 19:17:48 by brandebr          #+#    #+#             */
-/*   Updated: 2023/12/30 16:00:43 by brandebr         ###   ########.fr       */
+/*   Updated: 2024/01/03 13:58:28 by brandebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_map
 	char	*raw_map;
 	char	**map;
 	char	**map_cpy;
+	char	**map_cpy2;
 	char	**path;
 	size_t	height;
 	size_t	width;
@@ -51,6 +52,7 @@ typedef struct s_map
 	int		flag;
 	t_pos	start;
 	int		exit;
+	int		ex;
 	void	*mlx_ptr;
 	void	*win_ptr;
 	t_img	*imgs;
@@ -89,5 +91,6 @@ int		ft_collect_position(int count1, int count2, t_map *game);//in upload
 void	ft_win(t_map *game); //main.c
 void	inc_num_args(void); // upload_img.c
 int		ft_cant(char c); //upload_img.c
+int		ft_check_exit(t_map *game, size_t x, size_t y);
 
 #endif
