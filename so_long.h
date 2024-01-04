@@ -6,7 +6,7 @@
 /*   By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 19:17:48 by brandebr          #+#    #+#             */
-/*   Updated: 2024/01/03 19:32:02 by brandebr         ###   ########.fr       */
+/*   Updated: 2024/01/04 13:09:42 by brandebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,37 +59,37 @@ typedef struct s_map
 
 }				t_map;
 
+void	exit_error(t_map *game, char *str, int mod); //main.c
 int		parse_it(int argc, char **argv);// parse_it.c
 int		file_name(char *fn);// parse_it.c
 char	*get_next_line(int fd);
-void	write_error(void); //ft_read_map.c
-void		ft_read_map(char **argv, t_map *game); //ft_read_map.c
+//void	write_error(void); //ft_read_map.c
+void	ft_read_map(char **argv, t_map *game); //ft_read_map.c
 void	ft_measures(t_map *game);//ft_read_map.c
 int		ft_outer_limits(t_map *game);//parse_it.c -> moved to read_map.c
 int		exit_player_check(t_map *game);//parse_it.c
 int		ft_collectibles(t_map *game);//parse_it.c
-int		ft_rectangle_check(t_map *game);// paarse_it.c	
+void	ft_rectangle_check(t_map *game);// paarse_it.c	
 void	ft_free_map(t_map *game);//ft_read_map.c
-char	**cpy_map(t_map *game);//flood_map.c
-int		flood_map(t_map *map, size_t x, size_t y);//flood_map.c
-int		map_check(t_map *game);//main.c
-int		player_position(t_map *game);//main.c
+//char	**cpy_map(t_map *game);//flood_map.c
+void	flood_map(t_map *map, size_t x, size_t y);//flood_map.c
+void	map_check(t_map *game);//main.c
+void	player_position(t_map *game);//main.c
 int		ft_move(int keycode, t_map *game);
 void	ft_upload_img(t_map *game);
 int		ft_print_map(t_map *game);
 void	ft_win(t_map *game);
-void	ft_close(t_map *game);
+int		ft_close(t_map *game);
 void	ft_free_map(t_map *game);
-int		ft_free_all(t_map *game);
 int		ft_player_position(int count1, int count2, t_map *game);//positiion.c
 int		ft_o_position(int count1, int count2, t_map *game);//idem
 int		ft_wall_position(int count1, int count2, t_map *game);//i 
 int		ft_exit_position(int count1, int count2, t_map *game);// missing fake
 int		ft_collect_position(int count1, int count2, t_map *game);//in upload
 void	ft_win(t_map *game); //main.c
-void	inc_num_args(void); // upload_img.c
+//void	inc_num_args(void); // upload_img.c
 int		ft_cant(char c); //upload_img.c
-void	ft_check_exit(t_map *game, size_t x, size_t y);
+void	ft_check_exit(t_map *game);
 
  void tokemo(char **arr, int line);
 

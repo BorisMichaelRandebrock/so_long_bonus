@@ -6,7 +6,7 @@
 /*   By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 14:11:19 by brandebr          #+#    #+#             */
-/*   Updated: 2023/12/30 13:52:17 by brandebr         ###   ########.fr       */
+/*   Updated: 2024/01/04 13:05:25 by brandebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,19 +136,3 @@ int	ft_move(int keycode, t_map *game)
 		exit(1);
 	return (0);
 }
-/*
-void	ft_win(t_map *game)
-{
-		int	c;
-
-		c = 0;
-		game->count = game->count +1;
-		ft_printf("Total number of movements: %d\n", game->count);
-		mlx_string_put(game->mlx_ptr, game->win_ptr, 15,
-						30, 0xFFFFFF, "CONGRATULATIONS YOU WIN!!!\n");
-		mlx_do_sync(game->mlx_ptr);
-		while (c < 1000000000)
-				c++;
-		ft_free_all(game);
-		exit(-1);
-}*/

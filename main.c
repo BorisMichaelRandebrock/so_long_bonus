@@ -6,20 +6,31 @@
 /*   By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 17:26:44 by brandebr          #+#    #+#             */
-/*   Updated: 2024/01/03 19:46:36 by brandebr         ###   ########.fr       */
+/*   Updated: 2024/01/04 13:09:08 by brandebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	player_position(t_map *game)
+void	exit_error(t_map *game, char *str, int mod)
+{
+	size_t	size;
+
+	size = ft_strlen(str);
+	if (!mod)
+		ft_free_map(game);
+	write(2, str, size);
+	exit(1);
+}
+
+void	player_position(t_map *game)
 {
 	game->player.x = 0;
 	game->player.y = 0;
 	while (game->player.y <= game->height && game->player.x <= game->width)
 	{
 		if (game->map[game->player.y][game->player.x] == 'P')
-			return (0);
+			return ;
 		game->player.x++;
 		if (game->player.x == game->width)
 		{
@@ -27,35 +38,25 @@ int	player_position(t_map *game)
 			game->player.y++;
 		}
 	}
-	return (0);
 }
 
-int	map_check(t_map *game)
+void	map_check(t_map *game)
 {
-			printf("TOMATE\n");
-	(void)game;
-//	if (ft_outer_limits(game) == -1)
-//	{
-//		ft_free_map(game);
-//		write(2, "ERROR\nThe Board is not correctly defined\n", 41);
-//		exit (1);
-//	}
-//	if ((ft_collectibles(game) == -1) || (exit_player_check(game) == -1))
-//	{
-//		ft_free_map(game);
-//		write(2, "ERROR\nWrong Players, exits or collectibles", 43);
-//		exit (1);
-//	}
-//	ft_rectangle_check(game);
-//	player_position(game);
+	if (ft_outer_limits(game) == -1)
+		exit_error(game, "ERROR\nThe Board is not correctly defined\n", 0);
+	else if ((ft_collectibles(game) == -1) || (exit_player_check(game) == -1))
+		exit_error(game, "ERROR\nWrong Players, exits or collectibles\n", 0);
+	ft_rectangle_check(game);
+	player_position(game);
 	flood_map(game, game->player.x, game->player.y);
-	ft_check_exit(game, game->player.x, game->player.y);
-	if (game->coins_cpy != 0 || game->ex != 1)
-	{
-		write (2, "ERROR\nNo valid path between player and exit", 44);
-		exit (1);
-	}
-	return (0);
+
+	printf("Maps flooded\n");
+	tokemo(game->map,0);
+	printf("\n");
+	tokemo(game->map_cpy,0);
+	printf("\n");
+
+	ft_check_exit(game);
 }
 
 void	ft_win(t_map *game)
@@ -70,38 +71,7 @@ void	ft_win(t_map *game)
 	mlx_do_sync(game->mlx_ptr);
 	while (c < 1000000000)
 		c++;
-	ft_free_all(game);
-	exit(1);
-}
-
-void	ft_check_exit(t_map *game, size_t x, size_t y)
-{
-//		write(1, "NO!\n", 4);
-//	size_t	rows;
-//	size_t	cols;
-
-
-//	rows = game->map_cpy.x;
-//	cols = game->map_cpy->y;
-
-	if ((y < 0 || x < 0) || (y == game->height) || (x == game->width))
-		return ;
-//	printf("%c\n", game->map_cpy2[x][y]);
-	if ((game->map_cpy2[x][y] == 'V') || (game->map_cpy2[x][y] == '1'))
-		return ;
-//	printf("%c\n", game->map_cpy2[x][y]);
-	if (game->map_cpy2[x][y] == 'E')
-	{
-//			printf("%c", game->map_cpy2[x][y]);
-		game->ex++;
-	}
-//	printf("%c", game->map_cpy2[x][y]);
-	game->map_cpy2[x][y] = 'V';
-	ft_check_exit(game, x -1, y);
-	ft_check_exit(game, x, y +1);
-	ft_check_exit(game, x +1, y);
-	ft_check_exit(game, x, y -1);
-	return ;
+	ft_close(game);
 }
 
 #include <stdio.h>
@@ -129,34 +99,17 @@ int	main(int argc, char **argv)
 	game.count = 0;
 	parse_it(argc, argv);
 	ft_read_map(argv, &game);
-	tokemo(game.map, 0);
-	printf("TOMATito\n");
 	ft_measures(&game);
-//	game.map_cpy = cpy_map(&game);
-//	game.map_cpy2 = cpy_map(&game);
 	map_check(&game);
 	game.mlx_ptr = mlx_init();
 	ft_upload_img(&game);
 	game.win_ptr = mlx_new_window(game.mlx_ptr, game.width * SIZE,
 			game.height * SIZE, "a link to the past..");
 	if (game.win_ptr == NULL)
-	{
-		ft_printf("ERROR: Unable to create window\n");
-		exit(1);
-	}
+		exit_error(NULL, "ERROR\nUnable to create a window\n", 1);
 	ft_print_map(&game);
 	mlx_hook(game.win_ptr, 2, 0, ft_move, &game);
-	mlx_hook(game.win_ptr, 17, 0, ft_free_all, &game);
+	mlx_hook(game.win_ptr, 17, 0, ft_close, &game);
 	mlx_loop(game.mlx_ptr);
-	exit (0);
+	return (0);
 }
-//system("leaks so_long");
-//	if (game.exit != 1)
-//		no_path();
-/*
-void	no_path(void)
-{
-	write (2, "ERROR\nNo path between p and exit\n", 33);
-	exit (1);
-}
-*/
