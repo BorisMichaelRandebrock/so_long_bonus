@@ -1,16 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_file_to_dptr_m.c                                :+:      :+:    :+:   */
+/*   ft_file_to_dptr.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 14:22:19 by brandebr          #+#    #+#             */
-/*   Updated: 2024/01/04 14:40:09 by brandebr         ###   ########.fr       */
+/*   Updated: 2024/01/04 16:50:51 by brandebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
-//#include "so_long.h"
 
 char	**ft_file_to_dptr_m(int fd)
 {
@@ -33,4 +32,3 @@ char	**ft_file_to_dptr_m(int fd)
 	lines[line_count] = NULL;
 	return (lines);
 }
-

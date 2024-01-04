@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 19:22:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2024/01/03 18:43:08 by brandebr         ###   ########.fr       */
+/*   Updated: 2024/01/04 16:52:33 by brandebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #include "libft.h"
 #include <stdio.h>
 
-void ft_print_dptr(char **arr, int line)
+void	ft_print_dptr(char **arr, int line)
 {
 	int	i;
 

@@ -6,7 +6,7 @@
 /*   By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:18:47 by brandebr          #+#    #+#             */
-/*   Updated: 2024/01/04 14:39:51 by brandebr         ###   ########.fr       */
+/*   Updated: 2024/01/04 16:47:45 by brandebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ int	parse_it(int argc, char **argv)
 	ssize_t	bytes_read;
 
 	fd = (open(argv[1], O_RDONLY));
-
 	bytes_read = read(fd, &buffer, 1);
 	if (argc != 2)
 		exit_error(NULL, "ERROR\nIncorrect number of arguments\n", 1);
@@ -120,16 +119,14 @@ void	ft_rectangle_check(t_map *game)
 	int				b;
 
 	y = 0;
-	
 	a = ft_strlen(game->map[y]);
 	if (game->map[y][a - 1] == '\n')
-			a -= 1;
+		a -= 1;
 	while (y < game->height)
 	{
 		b = ft_strlen(game->map[y]);
 		if (game->map[y][b - 1] == '\n')
 			b -= 1;
-		printf("A: %d\tB: %d\n", a, b);
 		if (b == a)
 			y++;
 		else

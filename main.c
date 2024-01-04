@@ -6,7 +6,7 @@
 /*   By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 17:26:44 by brandebr          #+#    #+#             */
-/*   Updated: 2024/01/04 13:09:08 by brandebr         ###   ########.fr       */
+/*   Updated: 2024/01/04 16:46:39 by brandebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,25 +40,6 @@ void	player_position(t_map *game)
 	}
 }
 
-void	map_check(t_map *game)
-{
-	if (ft_outer_limits(game) == -1)
-		exit_error(game, "ERROR\nThe Board is not correctly defined\n", 0);
-	else if ((ft_collectibles(game) == -1) || (exit_player_check(game) == -1))
-		exit_error(game, "ERROR\nWrong Players, exits or collectibles\n", 0);
-	ft_rectangle_check(game);
-	player_position(game);
-	flood_map(game, game->player.x, game->player.y);
-
-	printf("Maps flooded\n");
-	tokemo(game->map,0);
-	printf("\n");
-	tokemo(game->map_cpy,0);
-	printf("\n");
-
-	ft_check_exit(game);
-}
-
 void	ft_win(t_map *game)
 {
 	int	c;
@@ -74,9 +55,7 @@ void	ft_win(t_map *game)
 	ft_close(game);
 }
 
-#include <stdio.h>
-
-void tokemo(char **arr, int line)
+void	tokemo(char **arr, int line)
 {
 	int	i;
 

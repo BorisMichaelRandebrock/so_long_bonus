@@ -6,7 +6,7 @@
 /*   By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 16:44:48 by brandebr          #+#    #+#             */
-/*   Updated: 2024/01/04 13:37:10 by brandebr         ###   ########.fr       */
+/*   Updated: 2024/01/04 16:43:58 by brandebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,15 +75,9 @@ int	ft_print_map(t_map *game)
 	return (0);
 }
 
-//void	inc_num_args(void)
-//{
-//	write(2, "ERROR\nIncorrect number of arguments", 34);
-//	exit (0);
-//}
-
 int	ft_cant(char c)
 {
-	if (c != 'E' && c != 'P' && c != '0' && c != '1' && c != 'F' && c != 'P')
+	if (c != 'E' && c != 'P' && c != '0' && c != '1' && c != 'E')
 		return (-1);
 	return (1);
 }

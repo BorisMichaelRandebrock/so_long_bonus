@@ -6,34 +6,12 @@
 /*   By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 18:01:03 by brandebr          #+#    #+#             */
-/*   Updated: 2024/01/04 14:45:57 by brandebr         ###   ########.fr       */
+/*   Updated: 2024/01/04 17:03:41 by brandebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-/*
-char	**ft_file_to_dptr_m(int fd)
-{
-	char	**lines;
-	char	*line;
-	size_t	line_count;
 
-	lines = NULL;
-	line_count = 0;
-	while (42)
-	{
-		line = get_next_line(fd);
-		if (line == NULL)
-			break ;
-		lines = realloc(lines, (line_count + 1) * sizeof(char *));
-		lines[line_count] = line;
-		line_count++;
-	}
-	lines = realloc(lines, (line_count + 1) * sizeof(char *));
-	lines[line_count] = NULL;
-	return (lines);
-}
-*/
 void	ft_read_map(char **argv, t_map *game)
 {
 	int	fd;
@@ -45,12 +23,18 @@ void	ft_read_map(char **argv, t_map *game)
 		exit_error(NULL, "ERROR\nFile could'nt be opened", 1);
 	game->map = ft_file_to_dptr_m(fd);
 	game->map_cpy = ft_file_to_dptr_m(fd1);
+}
 
-	printf("Maps read\n");
-	tokemo(game->map,0);
-	printf("\n");
-	tokemo(game->map_cpy,0);
-	printf("\n");
+void	map_check(t_map *game)
+{
+	if (ft_outer_limits(game) == -1)
+		exit_error(game, "ERROR\nThe Board is not correctly defined\n", 0);
+	else if ((ft_collectibles(game) == -1) || (exit_player_check(game) == -1))
+		exit_error(game, "ERROR\nWrong Players, exits or collectibles\n", 0);
+	ft_rectangle_check(game);
+	player_position(game);
+	flood_map(game, game->player.x, game->player.y);
+	ft_check_exit(game);
 }
 
 void	ft_free_map(t_map *game)
@@ -95,7 +79,6 @@ int	ft_outer_limits(t_map *game)
 	i = 0;
 	while (i < game->width)
 	{
-//		ft_printf("game width %i\t%i\n", game->width, i);
 		if (game->map[0][i] != '1' || game->map[game->height -1][i] != '1')
 			return (-1);
 		i++;
@@ -103,7 +86,6 @@ int	ft_outer_limits(t_map *game)
 	i = 0;
 	while (i < game->height)
 	{
-//			ft_printf("game height%i\n", game->height);
 		if (game->map[i][0] != '1')
 			return (-1);
 		if (game->map[i][game->width - 1] != '1')
@@ -112,3 +94,10 @@ int	ft_outer_limits(t_map *game)
 	}
 	return (0);
 }
+/*
+   ft_printf("Maps flooded\n");
+   tokemo(game->map,0);
+   ft_printf("\n");
+   tokemo(game->map_cpy,0);
+   ft_printf("\n");
+   */

@@ -6,7 +6,7 @@
 /*   By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 18:37:49 by brandebr          #+#    #+#             */
-/*   Updated: 2024/01/04 12:55:46 by brandebr         ###   ########.fr       */
+/*   Updated: 2024/01/04 16:31:30 by brandebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	ft_check_exit(t_map *game)
 		{
 			if (game->map_cpy[x][y] == 'C')
 				exit_error(game, "ERROR\nOne or more collectables "
-								"are not reachable\n", 0);
+					"are not reachable\n", 0);
 			else if (game->map_cpy[x][y] == 'E'
 				&& game->map_cpy[x - 1][y] != 'V'
 				&& game->map_cpy[x + 1][y] != 'V'
