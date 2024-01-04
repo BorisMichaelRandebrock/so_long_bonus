@@ -6,12 +6,12 @@
 /*   By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 18:01:03 by brandebr          #+#    #+#             */
-/*   Updated: 2024/01/04 13:08:07 by brandebr         ###   ########.fr       */
+/*   Updated: 2024/01/04 14:45:57 by brandebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
+/*
 char	**ft_file_to_dptr_m(int fd)
 {
 	char	**lines;
@@ -33,7 +33,7 @@ char	**ft_file_to_dptr_m(int fd)
 	lines[line_count] = NULL;
 	return (lines);
 }
-
+*/
 void	ft_read_map(char **argv, t_map *game)
 {
 	int	fd;
@@ -80,13 +80,6 @@ void	ft_measures(t_map *game)
 
 	x = 0;
 	y = 0;
-	//game->map = ft_split(game->raw_map, '\n');
-//	if (!game->map[0])
-//	{
-//		write(2, "ERROR\nEmpty file", 16);
-//		free(game->map);
-//		exit (0);
-//	}
 	while (game->map[0][x])
 		x++;
 	game->width = x - 1;

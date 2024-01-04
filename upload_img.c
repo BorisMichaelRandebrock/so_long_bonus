@@ -6,7 +6,7 @@
 /*   By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 16:44:48 by brandebr          #+#    #+#             */
-/*   Updated: 2024/01/04 12:05:13 by brandebr         ###   ########.fr       */
+/*   Updated: 2024/01/04 13:37:10 by brandebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int	ft_print_map(t_map *game)
 
 int	ft_cant(char c)
 {
-	if (c != 'E' && c != 'P' && c != '0' && c != '1' && c != 'E' && c != 'P')
+	if (c != 'E' && c != 'P' && c != '0' && c != '1' && c != 'F' && c != 'P')
 		return (-1);
 	return (1);
 }

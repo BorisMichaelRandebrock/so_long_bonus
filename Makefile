@@ -6,13 +6,13 @@
 #    By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/08 13:20:26 by brandebr          #+#    #+#              #
-#    Updated: 2024/01/02 16:24:03 by brandebr         ###   ########.fr        #
+#    Updated: 2024/01/04 14:44:44 by brandebr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
-SRC = main.c parse_it.c get_next_line.c ft_read_map.c flood_map.c movements.c\
+SRC = main.c parse_it.c ft_read_map.c flood_map.c movements.c\
 	  upload_img.c exit.c position.c
 
 LIBS = -L./Libft -lft -L./ft_printf -lftprintf -L./mlx -lmlx -framework OpenGL \
@@ -33,8 +33,7 @@ FT_PRINTF_DIR = ./ft_printf
 MLX = ./mlx/libmlx.a
 MLX_DIR = ./mlx
 
-all: Makefile
-	$(MAKE) $(NAME)
+all: Makefile $(NAME)
 
 %.o: %.c so_long.h ./Libft/libft.h ./ft_printf/ft_printf.h Makefile
 	$(CC) $(FLAGS) -c $< -o $@

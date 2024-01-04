@@ -6,7 +6,7 @@
 /*   By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:18:47 by brandebr          #+#    #+#             */
-/*   Updated: 2024/01/04 13:00:30 by brandebr         ###   ########.fr       */
+/*   Updated: 2024/01/04 14:39:51 by brandebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,10 +120,16 @@ void	ft_rectangle_check(t_map *game)
 	int				b;
 
 	y = 0;
+	
 	a = ft_strlen(game->map[y]);
+	if (game->map[y][a - 1] == '\n')
+			a -= 1;
 	while (y < game->height)
 	{
 		b = ft_strlen(game->map[y]);
+		if (game->map[y][b - 1] == '\n')
+			b -= 1;
+		printf("A: %d\tB: %d\n", a, b);
 		if (b == a)
 			y++;
 		else

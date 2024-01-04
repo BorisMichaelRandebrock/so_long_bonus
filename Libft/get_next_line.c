@@ -6,11 +6,11 @@
 /*   By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 19:09:57 by brandebr          #+#    #+#             */
-/*   Updated: 2023/12/30 13:16:14 by brandebr         ###   ########.fr       */
+/*   Updated: 2024/01/04 14:42:21 by brandebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Libft/libft.h"
+#include "libft.h"
 
 static char	*clear_buffer(char *buffer, char *line)
 {
