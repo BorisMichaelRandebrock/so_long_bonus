@@ -6,7 +6,7 @@
 #    By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/08 13:20:26 by brandebr          #+#    #+#              #
-#    Updated: 2024/01/04 14:44:44 by brandebr         ###   ########.fr        #
+#    Updated: 2024/01/05 11:38:42 by brandebr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,23 +33,18 @@ FT_PRINTF_DIR = ./ft_printf
 MLX = ./mlx/libmlx.a
 MLX_DIR = ./mlx
 
-all: Makefile $(NAME)
+all: Makefile libs $(NAME)
 
 %.o: %.c so_long.h ./Libft/libft.h ./ft_printf/ft_printf.h Makefile
 	$(CC) $(FLAGS) -c $< -o $@
 
 $(NAME): $(LIBFT) $(FT_PRINTF) $(MLX) $(OBJ)
 	$(CC) $(FLAGS) $(OBJ) $(LIBS) -o $(NAME)
-	#	$(CC) $(FLAGS) $(OBJ) $(LIBFT) $(FT_PRINTF) $(MLX) -o $(NAME)
 
-$(FT_PRINTF):
-	@make all -C $(FT_PRINTF_DIR)
-
-$(LIBFT):
-	@make bonus -C $(LIBFT_DIR)
-
-$(MLX):
-	@make all -C $(MLX_DIR)
+libs:
+	@make -C $(LIBFT_DIR) bonus
+	@make -C $(FT_PRINTF_DIR)
+	@make -C $(MLX_DIR)
 
 clean: 
 	/bin/rm -f $(OBJ)
@@ -65,4 +60,4 @@ fclean: clean
 
 re: fclean all 
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re libs
