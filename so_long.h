@@ -6,7 +6,7 @@
 /*   By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 19:17:48 by brandebr          #+#    #+#             */
-/*   Updated: 2024/01/04 16:29:15 by brandebr         ###   ########.fr       */
+/*   Updated: 2024/01/10 11:37:24 by brandebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ typedef struct s_map
 	t_img	*imgs;
 	size_t	x;
 	size_t	y;
+	char	direction;
 
 }				t_map;
 
@@ -72,9 +73,10 @@ void	map_check(t_map *game);//read_map.c
 void	ft_free_map(t_map *game);//ft_read_map.c
 void	ft_measures(t_map *game);//ft_read_map.c
 int		ft_outer_limits(t_map *game);//read_map.c
-int		ft_move(int keycode, t_map *game);
+int		ft_move(int keycode, t_map *game);//movements.c
 void	flood_map(t_map *map, size_t x, size_t y);//flood_map.c
 void	ft_check_exit(t_map *game);//flood_map
+void	ft_upload_more(t_map *game, int height, int width);
 void	ft_upload_img(t_map *game);//upload_img
 int		ft_print_map(t_map *game);//upload_img
 int		ft_cant(char c); //upload_img.c

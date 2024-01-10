@@ -6,7 +6,7 @@
 /*   By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 14:11:19 by brandebr          #+#    #+#             */
-/*   Updated: 2024/01/04 13:05:25 by brandebr         ###   ########.fr       */
+/*   Updated: 2024/01/10 11:37:26 by brandebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	ft_move_w(t_map *game)
 {
-	long int	count;
+//	long int	count;
 
-	count = 0;
+//	count = 0;
 	if (game->map[game->player.x -1][game->player.y] == 'E' && game->coins == 0)
 	{
 		game->map[game->player.x][game->player.y] = '0';
@@ -41,9 +41,9 @@ int	ft_move_w(t_map *game)
 
 int	ft_move_s(t_map *game)
 {
-	long int	count;
+//	long int	count;
 
-	count = 0;
+//	count = 0;
 	if ((game->coins == 0)
 		&& game->map[game->player.x +1][game->player.y] == 'E')
 	{
@@ -68,9 +68,10 @@ int	ft_move_s(t_map *game)
 
 int	ft_move_a(t_map *game)
 {
-	long int	count;
+//	long int	count;
 
-	count = 0;
+//	count = 0;
+	game->direction = 'A';
 	if ((game->map[game->player.x][game->player.y -1] == 'E'
 		&& game->coins == 0))
 	{
@@ -96,9 +97,10 @@ int	ft_move_a(t_map *game)
 
 int	ft_move_d(t_map *game)
 {
-	long int	count;
+//	long int	count;
 
-	count = 0;
+//	count = 0;
+	game->direction = 'D';
 	if ((game->map[game->player.x][game->player.y +1] == 'E'
 		&& game->coins == 0))
 	{

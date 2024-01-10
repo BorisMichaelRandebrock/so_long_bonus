@@ -6,7 +6,7 @@
 /*   By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 16:44:48 by brandebr          #+#    #+#             */
-/*   Updated: 2024/01/04 16:43:58 by brandebr         ###   ########.fr       */
+/*   Updated: 2024/01/10 11:37:28 by brandebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,20 @@ int	ft_fake_position(int count1, int count2, t_map *game)
 	return (0);
 }
 
+void	ft_upload_more(t_map *game, int height, int width)
+{
+	game->imgs[5].img_ptr = mlx_xpm_file_to_image(game->mlx_ptr,
+			"imgs/player_left.xpm", &width, &height);
+	game->imgs[5].data = (int *)mlx_get_data_addr(game->imgs[5].img_ptr,
+			&game->imgs[5].bpp, &game->imgs[5].size_l, &game->imgs[5].endian);
+}
+
 void	ft_upload_img(t_map *game)
 {
 	int		height;
 	int		width;
 
-	game->imgs = malloc(sizeof(t_img) * 5);
+	game->imgs = malloc(sizeof(t_img) * 6);
 	game->imgs[0].img_ptr = mlx_xpm_file_to_image(game->mlx_ptr,
 			"imgs/0.xpm", &width, &height);
 	game->imgs[0].data = (int *)mlx_get_data_addr(game->imgs[0].img_ptr,
@@ -45,6 +53,7 @@ void	ft_upload_img(t_map *game)
 			"imgs/collect.xpm", &width, &height);
 	game->imgs[4].data = (int *)mlx_get_data_addr(game->imgs[4].img_ptr,
 			&game->imgs[4].bpp, &game->imgs[4].size_l, &game->imgs[4].endian);
+	ft_upload_more(game, height, width);
 }
 
 int	ft_print_map(t_map *game)
@@ -77,7 +86,7 @@ int	ft_print_map(t_map *game)
 
 int	ft_cant(char c)
 {
-	if (c != 'E' && c != 'P' && c != '0' && c != '1' && c != 'E')
+	if (c != 'E' && c != 'P' && c != '0' && c != '1' && c != 'F')
 		return (-1);
 	return (1);
 }
