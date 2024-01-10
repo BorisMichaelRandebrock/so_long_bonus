@@ -6,7 +6,7 @@
 /*   By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 18:26:52 by brandebr          #+#    #+#             */
-/*   Updated: 2024/01/10 11:42:14 by brandebr         ###   ########.fr       */
+/*   Updated: 2024/01/10 14:25:28 by brandebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@ int	ft_player_position(int count1, int count2, t_map *game)
 
 	if (game->direction == 'A')
 		img_indx = 5;
+	else if (game->direction == 'W')
+		img_indx = 6;
+	else if (game->direction == 'S')
+		img_indx = 7;
 	else
 		img_indx = 3;
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,

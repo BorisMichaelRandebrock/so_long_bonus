@@ -6,7 +6,7 @@
 /*   By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 14:11:19 by brandebr          #+#    #+#             */
-/*   Updated: 2024/01/10 11:37:26 by brandebr         ###   ########.fr       */
+/*   Updated: 2024/01/10 14:25:21 by brandebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	ft_move_w(t_map *game)
 //	long int	count;
 
 //	count = 0;
+	game->direction = 'W';
 	if (game->map[game->player.x -1][game->player.y] == 'E' && game->coins == 0)
 	{
 		game->map[game->player.x][game->player.y] = '0';
@@ -44,6 +45,7 @@ int	ft_move_s(t_map *game)
 //	long int	count;
 
 //	count = 0;
+	game->direction = 'S';
 	if ((game->coins == 0)
 		&& game->map[game->player.x +1][game->player.y] == 'E')
 	{

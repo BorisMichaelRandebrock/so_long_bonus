@@ -6,7 +6,7 @@
 /*   By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 16:44:48 by brandebr          #+#    #+#             */
-/*   Updated: 2024/01/10 11:37:28 by brandebr         ###   ########.fr       */
+/*   Updated: 2024/01/10 14:25:23 by brandebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,14 @@ void	ft_upload_more(t_map *game, int height, int width)
 			"imgs/player_left.xpm", &width, &height);
 	game->imgs[5].data = (int *)mlx_get_data_addr(game->imgs[5].img_ptr,
 			&game->imgs[5].bpp, &game->imgs[5].size_l, &game->imgs[5].endian);
+	game->imgs[6].img_ptr = mlx_xpm_file_to_image(game->mlx_ptr,
+			"imgs/player_up.xpm", &width, &height);
+	game->imgs[6].data = (int *)mlx_get_data_addr(game->imgs[6].img_ptr,
+			&game->imgs[6].bpp, &game->imgs[6].size_l, &game->imgs[6].endian);
+	game->imgs[7].img_ptr = mlx_xpm_file_to_image(game->mlx_ptr,
+			"imgs/player_down.xpm", &width, &height);
+	game->imgs[7].data = (int *)mlx_get_data_addr(game->imgs[7].img_ptr,
+			&game->imgs[7].bpp, &game->imgs[7].size_l, &game->imgs[7].endian);
 }
 
 void	ft_upload_img(t_map *game)
@@ -32,7 +40,7 @@ void	ft_upload_img(t_map *game)
 	int		height;
 	int		width;
 
-	game->imgs = malloc(sizeof(t_img) * 6);
+	game->imgs = malloc(sizeof(t_img) * 8);
 	game->imgs[0].img_ptr = mlx_xpm_file_to_image(game->mlx_ptr,
 			"imgs/0.xpm", &width, &height);
 	game->imgs[0].data = (int *)mlx_get_data_addr(game->imgs[0].img_ptr,
