@@ -12,7 +12,6 @@ Welcome to my so_long project! This project is part of the 42 curriculum, aimed 
 - [Examples](#examples)
 - [Contributing](#contributing)
 
-
 ## Introduction
 
 The project is a simple 2D game developed using the MiniLibX library. The player controls a character that can move around a map, collect items, and reach an exit to complete the level. This project helps students understand graphics programming and event handling.
@@ -30,12 +29,14 @@ The project is a simple 2D game developed using the MiniLibX library. The player
 To install and compile the So Long project, follow these steps:
 
 1. Clone the repository:
+
    ```sh
    git clone https://github.com/BorisMichaelRandebrock/so_long_bonus.git
    cd so_long
    ```
 
 2. Compile the project:
+
    ```sh
    make
    ```
@@ -63,10 +64,12 @@ Here are a few examples of how to use the So Long project:
 
 ```sh
 # Run the game with a specific map
-./solong maps/map1.ber
+./so_long maps/boo.ber
 
 # Run the game with another map
+./solong maps/map1.ber
 ./solong maps/map2.ber
+or any other map you can find here or create...
 ```
 
 ## Contributing
