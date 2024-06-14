@@ -1,8 +1,12 @@
 # 42 so_long
 
-Welcome to my so_long project! This project is part of the 42 curriculum, aimed at creating a simple 2D game application using the MiniLibX library. The goal is to develop a small game that demonstrates basic graphics programming concepts.
+Welcome to my so_long project!  
+This project is part of the 42 curriculum, aimed at creating a simple 2D game application using the MiniLibX library. The goal is to develop a small game that demonstrates basic graphics programming concepts.
 
 ## Table of Contents
+
+<img align="right" src="https://github.com/BorisMichaelRandebrock/so_long_bonus/assets/98555508/96e3b835-0b1e-4511-8ebe-a78016c3d746"
+     alt="so_long with boo.ber"  width="800" height="200">
 
 - [Introduction](#introduction)
 - [Features](#features)
@@ -43,7 +47,7 @@ To install and compile the So Long project, follow these steps:
 
 3. Run the game:
    ```sh
-   ./so_long maps/map.ber
+   ./so_long maps/boo.ber
    ```
 
 ## Usage
@@ -81,3 +85,5 @@ Contributions are welcome! If you would like to contribute to this project, plea
 3. Commit your changes.
 4. Push to your branch.
 5. Create a pull request.
+
+<img width="1345" alt="Captura de pantalla 2024-06-14 a las 22 45 23" src="https://github.com/BorisMichaelRandebrock/so_long_bonus/assets/98555508/96e3b835-0b1e-4511-8ebe-a78016c3d746">
