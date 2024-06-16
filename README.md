@@ -6,7 +6,7 @@ This project is part of the 42 curriculum, aimed at creating a simple 2D game ap
 ## Table of Contents
 
 <img align="right" src="https://github.com/BorisMichaelRandebrock/so_long_bonus/assets/98555508/96e3b835-0b1e-4511-8ebe-a78016c3d746"
-     alt="so_long with boo.ber"  width="800" height="200">
+     alt="so_long with boo.ber"  width="700" height="200">
 
 - [Introduction](#introduction)
 - [Features](#features)
