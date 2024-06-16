@@ -3,14 +3,18 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: brandebr <brandebr@student.42barcelona.co  +#+  +:+       +#+         #
+#    By: boris <boris@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/08 13:20:26 by brandebr          #+#    #+#              #
-#    Updated: 2024/01/05 11:38:42 by brandebr         ###   ########.fr        #
+#    Updated: 2024/06/16 13:51:18 by boris            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
+
+INC_DIR	= include/
+SRC_DIR = src/
+OBJ_DIR = obj/
 
 SRC = main.c parse_it.c ft_read_map.c flood_map.c movements.c\
 	  upload_img.c exit.c position.c
@@ -18,7 +22,7 @@ SRC = main.c parse_it.c ft_read_map.c flood_map.c movements.c\
 LIBS = -L./Libft -lft -L./ft_printf -lftprintf -L./mlx -lmlx -framework OpenGL \
 	   -framework AppKit
 
-OBJ = $(SRC:%.c=%.o)
+OBJ = $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 
 CC = cc
 
@@ -35,8 +39,11 @@ MLX_DIR = ./mlx
 
 all: Makefile libs $(NAME)
 
-%.o: %.c so_long.h ./Libft/libft.h ./ft_printf/ft_printf.h Makefile
-	$(CC) $(FLAGS) -c $< -o $@
+# %.o: %.c so_long.h ./Libft/libft.h ./ft_printf/ft_printf.h Makefile
+# 	$(CC) $(FLAGS) -c $< -o $@
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c Makefile
+	@mkdir -p $(OBJ_DIR)
+	$(CC) -I $(INC_DIR) -c $< -o $@ $(FLAGS)
 
 $(NAME): $(LIBFT) $(FT_PRINTF) $(MLX) $(OBJ)
 	$(CC) $(FLAGS) $(OBJ) $(LIBS) -o $(NAME)
